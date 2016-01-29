@@ -27,6 +27,8 @@ namespace StaticGenerator
 
         private void frmGenerate_Load(object sender, EventArgs e)
         {
+            this.Text = string.Format("{0} v{1}", this.Text, Application.ProductVersion);
+
             // Load previous settings
             if (!string.IsNullOrEmpty(Properties.Settings.Default.LastDropFolder))
             {
