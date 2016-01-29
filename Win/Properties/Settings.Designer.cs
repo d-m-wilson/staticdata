@@ -58,5 +58,17 @@ namespace StaticGenerator.Properties {
                 this["ScriptFilenameSuffix"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OmitSchemaFromFileNames {
+            get {
+                return ((bool)(this["OmitSchemaFromFileNames"]));
+            }
+            set {
+                this["OmitSchemaFromFileNames"] = value;
+            }
+        }
     }
 }

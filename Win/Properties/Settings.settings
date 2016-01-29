@@ -11,5 +11,8 @@
     <Setting Name="ScriptFilenameSuffix" Type="System.String" Scope="User">
       <Value Profile="(Default)">.data.sql</Value>
     </Setting>
+    <Setting Name="OmitSchemaFromFileNames" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

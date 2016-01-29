@@ -41,6 +41,7 @@ namespace StaticGenerator
             this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtScriptFilenameSuffix = new System.Windows.Forms.TextBox();
+            this.chkOmitSchemaFromFileNames = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // clbTables
@@ -50,7 +51,7 @@ namespace StaticGenerator
             this.clbTables.Location = new System.Drawing.Point(12, 26);
             this.clbTables.Name = "clbTables";
             this.clbTables.Size = new System.Drawing.Size(361, 139);
-            this.clbTables.TabIndex = 0;
+            this.clbTables.TabIndex = 1;
             this.clbTables.ThreeDCheckBoxes = true;
             // 
             // label1
@@ -59,7 +60,7 @@ namespace StaticGenerator
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Select tables to script:";
             // 
             // label2
@@ -68,7 +69,7 @@ namespace StaticGenerator
             this.label2.Location = new System.Drawing.Point(12, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Select drop folder:";
             // 
             // txtFolder
@@ -77,34 +78,34 @@ namespace StaticGenerator
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
             this.txtFolder.Size = new System.Drawing.Size(326, 20);
-            this.txtFolder.TabIndex = 3;
+            this.txtFolder.TabIndex = 4;
             // 
             // btnSelectFolder
             // 
             this.btnSelectFolder.Location = new System.Drawing.Point(347, 220);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(25, 19);
-            this.btnSelectFolder.TabIndex = 4;
+            this.btnSelectFolder.TabIndex = 5;
             this.btnSelectFolder.Text = "...";
             this.btnSelectFolder.UseVisualStyleBackColor = true;
             this.btnSelectFolder.Click += new System.EventHandler(this.btnSelectFolder_Click);
             // 
             // btnGenerateScripts
             // 
-            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 331);
+            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 348);
             this.btnGenerateScripts.Name = "btnGenerateScripts";
             this.btnGenerateScripts.Size = new System.Drawing.Size(121, 30);
-            this.btnGenerateScripts.TabIndex = 5;
+            this.btnGenerateScripts.TabIndex = 10;
             this.btnGenerateScripts.Text = "Generate Scripts";
             this.btnGenerateScripts.UseVisualStyleBackColor = true;
             this.btnGenerateScripts.Click += new System.EventHandler(this.btnGenerateScripts_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(303, 336);
+            this.btnClose.Location = new System.Drawing.Point(304, 354);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(69, 24);
-            this.btnClose.TabIndex = 6;
+            this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -112,10 +113,10 @@ namespace StaticGenerator
             // chkCreateIndex
             // 
             this.chkCreateIndex.AutoSize = true;
-            this.chkCreateIndex.Location = new System.Drawing.Point(15, 302);
+            this.chkCreateIndex.Location = new System.Drawing.Point(15, 316);
             this.chkCreateIndex.Name = "chkCreateIndex";
             this.chkCreateIndex.Size = new System.Drawing.Size(265, 17);
-            this.chkCreateIndex.TabIndex = 7;
+            this.chkCreateIndex.TabIndex = 9;
             this.chkCreateIndex.Text = "Create index script (to paste into post deploy script)";
             this.chkCreateIndex.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +126,7 @@ namespace StaticGenerator
             this.selectAllCheckBox.Location = new System.Drawing.Point(15, 171);
             this.selectAllCheckBox.Name = "selectAllCheckBox";
             this.selectAllCheckBox.Size = new System.Drawing.Size(70, 17);
-            this.selectAllCheckBox.TabIndex = 8;
+            this.selectAllCheckBox.TabIndex = 2;
             this.selectAllCheckBox.Text = "Select &All";
             this.selectAllCheckBox.UseVisualStyleBackColor = true;
             this.selectAllCheckBox.CheckedChanged += new System.EventHandler(this.selectAllCheckBox_CheckedChanged);
@@ -133,24 +134,35 @@ namespace StaticGenerator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 252);
+            this.label3.Location = new System.Drawing.Point(9, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Script File Name Suffix:";
             // 
             // txtScriptFilenameSuffix
             // 
-            this.txtScriptFilenameSuffix.Location = new System.Drawing.Point(15, 268);
+            this.txtScriptFilenameSuffix.Location = new System.Drawing.Point(15, 258);
             this.txtScriptFilenameSuffix.Name = "txtScriptFilenameSuffix";
             this.txtScriptFilenameSuffix.Size = new System.Drawing.Size(176, 20);
-            this.txtScriptFilenameSuffix.TabIndex = 10;
+            this.txtScriptFilenameSuffix.TabIndex = 7;
+            // 
+            // chkOmitSchemaFromFileNames
+            // 
+            this.chkOmitSchemaFromFileNames.AutoSize = true;
+            this.chkOmitSchemaFromFileNames.Location = new System.Drawing.Point(15, 288);
+            this.chkOmitSchemaFromFileNames.Name = "chkOmitSchemaFromFileNames";
+            this.chkOmitSchemaFromFileNames.Size = new System.Drawing.Size(188, 17);
+            this.chkOmitSchemaFromFileNames.TabIndex = 8;
+            this.chkOmitSchemaFromFileNames.Text = "Omit schema from script file names";
+            this.chkOmitSchemaFromFileNames.UseVisualStyleBackColor = true;
             // 
             // frmGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 390);
+            this.Controls.Add(this.chkOmitSchemaFromFileNames);
             this.Controls.Add(this.txtScriptFilenameSuffix);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.selectAllCheckBox);
@@ -189,5 +201,6 @@ namespace StaticGenerator
         private System.Windows.Forms.CheckBox selectAllCheckBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtScriptFilenameSuffix;
+        private System.Windows.Forms.CheckBox chkOmitSchemaFromFileNames;
     }
 }

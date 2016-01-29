@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using StaticGeneratorCommon;
 
@@ -11,6 +12,8 @@ namespace StaticGenerator
 {
     public partial class frmGenerate : Form
     {
+        private const string schemaNameExpression = @"^\[.*\]\.";
+
         public frmGenerate()
         {
             InitializeComponent();
@@ -42,6 +45,8 @@ namespace StaticGenerator
                 this.txtScriptFilenameSuffix.Text = Properties.Settings.Default.ScriptFilenameSuffix;
             }
 
+            this.chkOmitSchemaFromFileNames.Checked = Properties.Settings.Default.OmitSchemaFromFileNames;
+
             // Populate the table list
             LoadTableList();
         }
@@ -52,6 +57,7 @@ namespace StaticGenerator
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
             Properties.Settings.Default.ScriptFilenameSuffix = this.txtScriptFilenameSuffix.Text;
+            Properties.Settings.Default.OmitSchemaFromFileNames = this.chkOmitSchemaFromFileNames.Checked;
             Properties.Settings.Default.Save();
         }
 
@@ -148,13 +154,32 @@ namespace StaticGenerator
             string strTemplate = srTemplate.ReadToEnd();
             srTemplate.Close();
 
+            Regex schemaNameRegex = null;
+
+            if (chkOmitSchemaFromFileNames.Checked)
+            {
+                schemaNameRegex = new Regex(schemaNameExpression, RegexOptions.Compiled);
+            }
+
             foreach (string strTableName in clbTables.CheckedItems)
             {
+                string scriptFileName;
+
+                if (chkOmitSchemaFromFileNames.Checked)
+                {
+                    scriptFileName = schemaNameRegex.Replace(strTableName, string.Empty, 1);
+                }
+                else
+                {
+                    scriptFileName = strTableName;
+                }
+
                 // Replace the tablename placeholder in the template
                 string strNewTemplate = strTemplate.Replace("<TABLENAME>", strTableName);
 
                 // Create the file
-                StreamWriter swOutFile = new StreamWriter(Path.Combine(txtFolder.Text, StripBrackets(strTableName)) + txtScriptFilenameSuffix.Text, false);
+                scriptFileName = Path.Combine(txtFolder.Text, StripBrackets(scriptFileName)) + txtScriptFilenameSuffix.Text;
+                StreamWriter swOutFile = new StreamWriter(scriptFileName, false);
                 swOutFile.Write(Globals.CreateStaticDataManager(strTableName, strNewTemplate));
                 swOutFile.Close();
             }
@@ -165,7 +190,19 @@ namespace StaticGenerator
                 StreamWriter swIndex = new StreamWriter(Path.Combine(txtFolder.Text, "index.txt"), false);
                 foreach (string strTableName in clbTables.CheckedItems)
                 {
-                    swIndex.WriteLine(":r .\\StaticData\\" + StripBrackets(strTableName) + txtScriptFilenameSuffix.Text);
+                    string scriptFileName;
+
+                    if (chkOmitSchemaFromFileNames.Checked)
+                    {
+                        scriptFileName = schemaNameRegex.Replace(strTableName, string.Empty, 1);
+                    }
+                    else
+                    {
+                        scriptFileName = strTableName;
+                    }
+
+                    scriptFileName = StripBrackets(scriptFileName) + txtScriptFilenameSuffix.Text;
+                    swIndex.WriteLine(":r .\\StaticData\\" + scriptFileName);
                 }
                 swIndex.Close();
             }
