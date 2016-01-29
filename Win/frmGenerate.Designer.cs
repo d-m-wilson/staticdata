@@ -39,6 +39,8 @@ namespace StaticGenerator
             this.btnClose = new System.Windows.Forms.Button();
             this.chkCreateIndex = new System.Windows.Forms.CheckBox();
             this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtScriptFilenameSuffix = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // clbTables
@@ -89,7 +91,7 @@ namespace StaticGenerator
             // 
             // btnGenerateScripts
             // 
-            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 286);
+            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 331);
             this.btnGenerateScripts.Name = "btnGenerateScripts";
             this.btnGenerateScripts.Size = new System.Drawing.Size(121, 30);
             this.btnGenerateScripts.TabIndex = 5;
@@ -99,7 +101,7 @@ namespace StaticGenerator
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(303, 291);
+            this.btnClose.Location = new System.Drawing.Point(303, 336);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(69, 24);
             this.btnClose.TabIndex = 6;
@@ -110,7 +112,7 @@ namespace StaticGenerator
             // chkCreateIndex
             // 
             this.chkCreateIndex.AutoSize = true;
-            this.chkCreateIndex.Location = new System.Drawing.Point(15, 257);
+            this.chkCreateIndex.Location = new System.Drawing.Point(15, 302);
             this.chkCreateIndex.Name = "chkCreateIndex";
             this.chkCreateIndex.Size = new System.Drawing.Size(265, 17);
             this.chkCreateIndex.TabIndex = 7;
@@ -128,11 +130,29 @@ namespace StaticGenerator
             this.selectAllCheckBox.UseVisualStyleBackColor = true;
             this.selectAllCheckBox.CheckedChanged += new System.EventHandler(this.selectAllCheckBox_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 252);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Script File Name Suffix:";
+            // 
+            // txtScriptFilenameSuffix
+            // 
+            this.txtScriptFilenameSuffix.Location = new System.Drawing.Point(15, 268);
+            this.txtScriptFilenameSuffix.Name = "txtScriptFilenameSuffix";
+            this.txtScriptFilenameSuffix.Size = new System.Drawing.Size(176, 20);
+            this.txtScriptFilenameSuffix.TabIndex = 10;
+            // 
             // frmGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 345);
+            this.ClientSize = new System.Drawing.Size(397, 390);
+            this.Controls.Add(this.txtScriptFilenameSuffix);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.selectAllCheckBox);
             this.Controls.Add(this.chkCreateIndex);
             this.Controls.Add(this.btnClose);
@@ -147,9 +167,9 @@ namespace StaticGenerator
             this.MaximizeBox = false;
             this.Name = "frmGenerate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Generate Static Data Management Scripts";
-            this.Load += new System.EventHandler(this.frmGenerate_Load);
+            this.Text = "Static Data Script Generator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGenerate_Closing);
+            this.Load += new System.EventHandler(this.frmGenerate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +187,7 @@ namespace StaticGenerator
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox chkCreateIndex;
         private System.Windows.Forms.CheckBox selectAllCheckBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtScriptFilenameSuffix;
     }
 }

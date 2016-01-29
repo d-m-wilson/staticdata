@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Configuration;
-using StaticGeneratorCommon;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.IO;
-using System.Collections;
+using System.Windows.Forms;
+using StaticGeneratorCommon;
 
 namespace StaticGenerator
 {
@@ -36,7 +32,13 @@ namespace StaticGenerator
             {
                 this.txtFolder.Text = Properties.Settings.Default.LastDropFolder;
             }
+
             this.chkCreateIndex.Checked = Properties.Settings.Default.LastIndexChoice;
+
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.ScriptFilenameSuffix))
+            {
+                this.txtScriptFilenameSuffix.Text = Properties.Settings.Default.ScriptFilenameSuffix;
+            }
 
             // Populate the table list
             LoadTableList();
@@ -47,6 +49,7 @@ namespace StaticGenerator
             // Save settings
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
+            Properties.Settings.Default.ScriptFilenameSuffix = this.txtScriptFilenameSuffix.Text;
             Properties.Settings.Default.Save();
         }
 
@@ -88,6 +91,14 @@ namespace StaticGenerator
             Application.Exit();
         }
 
+        private bool HasInvalidFileNameChars(string input)
+        {
+            return Path.GetInvalidFileNameChars()
+                .ToList()
+                .Where(ch => input.Contains(ch))
+                .Any();
+        }
+
         private void btnGenerateScripts_Click(object sender, EventArgs e)
         {
             // Make sure they have selected a folder
@@ -101,6 +112,18 @@ namespace StaticGenerator
             if (!System.IO.Directory.Exists(this.txtFolder.Text))
             {
                 MessageBox.Show("The selected folder does not exist. Pleas select a valid directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtScriptFilenameSuffix.Text))
+            {
+                MessageBox.Show("The Script Filename Suffix is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (HasInvalidFileNameChars(txtScriptFilenameSuffix.Text))
+            {
+                MessageBox.Show("The Script File Name Suffix contains one or more characters which cannot be used in a file name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -129,7 +152,7 @@ namespace StaticGenerator
                 string strNewTemplate = strTemplate.Replace("<TABLENAME>", strTableName);
 
                 // Create the file
-                StreamWriter swOutFile = new StreamWriter(Path.Combine(txtFolder.Text, StripBrackets(strTableName)) + ".staticdata.sql", false);
+                StreamWriter swOutFile = new StreamWriter(Path.Combine(txtFolder.Text, StripBrackets(strTableName)) + txtScriptFilenameSuffix.Text, false);
                 swOutFile.Write(Globals.CreateStaticDataManager(strTableName, strNewTemplate));
                 swOutFile.Close();
             }
@@ -140,7 +163,7 @@ namespace StaticGenerator
                 StreamWriter swIndex = new StreamWriter(Path.Combine(txtFolder.Text, "index.txt"), false);
                 foreach (string strTableName in clbTables.CheckedItems)
                 {
-                    swIndex.WriteLine(":r .\\StaticData\\" + StripBrackets(strTableName) + ".staticdata.sql");
+                    swIndex.WriteLine(":r .\\StaticData\\" + StripBrackets(strTableName) + txtScriptFilenameSuffix.Text);
                 }
                 swIndex.Close();
             }
