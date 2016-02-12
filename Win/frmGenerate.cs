@@ -68,6 +68,10 @@ namespace StaticGenerator
                 string strConnectionString = ConfigurationManager.ConnectionStrings["default"].ToString();
                 Globals.ConnectionString = strConnectionString;
 
+                SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(strConnectionString);
+                lblServer.Text = connectionStringBuilder.DataSource;
+                lblDatabase.Text = connectionStringBuilder.InitialCatalog;
+
                 DataTable dtTableList = new DataTable("Tables");
                 SqlCommand cdTableList = Globals.Connection.CreateCommand();
                 cdTableList.CommandText = "SELECT TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";

@@ -42,13 +42,17 @@ namespace StaticGenerator
             this.label3 = new System.Windows.Forms.Label();
             this.txtScriptFilenameSuffix = new System.Windows.Forms.TextBox();
             this.chkOmitSchemaFromFileNames = new System.Windows.Forms.CheckBox();
+            this.lblServerLabel = new System.Windows.Forms.Label();
+            this.lblServer = new System.Windows.Forms.Label();
+            this.lblDatabaseLabel = new System.Windows.Forms.Label();
+            this.lblDatabase = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clbTables
             // 
             this.clbTables.CheckOnClick = true;
             this.clbTables.FormattingEnabled = true;
-            this.clbTables.Location = new System.Drawing.Point(12, 26);
+            this.clbTables.Location = new System.Drawing.Point(12, 71);
             this.clbTables.Name = "clbTables";
             this.clbTables.Size = new System.Drawing.Size(361, 139);
             this.clbTables.TabIndex = 1;
@@ -57,7 +61,7 @@ namespace StaticGenerator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
@@ -66,7 +70,7 @@ namespace StaticGenerator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 203);
+            this.label2.Location = new System.Drawing.Point(12, 248);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 3;
@@ -74,7 +78,7 @@ namespace StaticGenerator
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(15, 219);
+            this.txtFolder.Location = new System.Drawing.Point(15, 264);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
             this.txtFolder.Size = new System.Drawing.Size(326, 20);
@@ -82,7 +86,7 @@ namespace StaticGenerator
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(347, 220);
+            this.btnSelectFolder.Location = new System.Drawing.Point(347, 265);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(25, 19);
             this.btnSelectFolder.TabIndex = 5;
@@ -92,7 +96,7 @@ namespace StaticGenerator
             // 
             // btnGenerateScripts
             // 
-            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 348);
+            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 393);
             this.btnGenerateScripts.Name = "btnGenerateScripts";
             this.btnGenerateScripts.Size = new System.Drawing.Size(121, 30);
             this.btnGenerateScripts.TabIndex = 10;
@@ -102,7 +106,7 @@ namespace StaticGenerator
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(304, 354);
+            this.btnClose.Location = new System.Drawing.Point(304, 399);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(69, 24);
             this.btnClose.TabIndex = 11;
@@ -113,7 +117,7 @@ namespace StaticGenerator
             // chkCreateIndex
             // 
             this.chkCreateIndex.AutoSize = true;
-            this.chkCreateIndex.Location = new System.Drawing.Point(15, 316);
+            this.chkCreateIndex.Location = new System.Drawing.Point(15, 361);
             this.chkCreateIndex.Name = "chkCreateIndex";
             this.chkCreateIndex.Size = new System.Drawing.Size(265, 17);
             this.chkCreateIndex.TabIndex = 9;
@@ -123,7 +127,7 @@ namespace StaticGenerator
             // selectAllCheckBox
             // 
             this.selectAllCheckBox.AutoSize = true;
-            this.selectAllCheckBox.Location = new System.Drawing.Point(15, 171);
+            this.selectAllCheckBox.Location = new System.Drawing.Point(15, 216);
             this.selectAllCheckBox.Name = "selectAllCheckBox";
             this.selectAllCheckBox.Size = new System.Drawing.Size(70, 17);
             this.selectAllCheckBox.TabIndex = 2;
@@ -134,7 +138,7 @@ namespace StaticGenerator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 242);
+            this.label3.Location = new System.Drawing.Point(9, 287);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
             this.label3.TabIndex = 6;
@@ -142,7 +146,7 @@ namespace StaticGenerator
             // 
             // txtScriptFilenameSuffix
             // 
-            this.txtScriptFilenameSuffix.Location = new System.Drawing.Point(15, 258);
+            this.txtScriptFilenameSuffix.Location = new System.Drawing.Point(15, 303);
             this.txtScriptFilenameSuffix.Name = "txtScriptFilenameSuffix";
             this.txtScriptFilenameSuffix.Size = new System.Drawing.Size(176, 20);
             this.txtScriptFilenameSuffix.TabIndex = 7;
@@ -150,18 +154,58 @@ namespace StaticGenerator
             // chkOmitSchemaFromFileNames
             // 
             this.chkOmitSchemaFromFileNames.AutoSize = true;
-            this.chkOmitSchemaFromFileNames.Location = new System.Drawing.Point(15, 288);
+            this.chkOmitSchemaFromFileNames.Location = new System.Drawing.Point(15, 333);
             this.chkOmitSchemaFromFileNames.Name = "chkOmitSchemaFromFileNames";
             this.chkOmitSchemaFromFileNames.Size = new System.Drawing.Size(188, 17);
             this.chkOmitSchemaFromFileNames.TabIndex = 8;
             this.chkOmitSchemaFromFileNames.Text = "Omit schema from script file names";
             this.chkOmitSchemaFromFileNames.UseVisualStyleBackColor = true;
             // 
+            // lblServerLabel
+            // 
+            this.lblServerLabel.AutoSize = true;
+            this.lblServerLabel.Location = new System.Drawing.Point(12, 9);
+            this.lblServerLabel.Name = "lblServerLabel";
+            this.lblServerLabel.Size = new System.Drawing.Size(41, 13);
+            this.lblServerLabel.TabIndex = 12;
+            this.lblServerLabel.Text = "Server:";
+            // 
+            // lblServer
+            // 
+            this.lblServer.AutoSize = true;
+            this.lblServer.Location = new System.Drawing.Point(74, 9);
+            this.lblServer.Name = "lblServer";
+            this.lblServer.Size = new System.Drawing.Size(54, 13);
+            this.lblServer.TabIndex = 13;
+            this.lblServer.Text = "[lblServer]";
+            // 
+            // lblDatabaseLabel
+            // 
+            this.lblDatabaseLabel.AutoSize = true;
+            this.lblDatabaseLabel.Location = new System.Drawing.Point(12, 26);
+            this.lblDatabaseLabel.Name = "lblDatabaseLabel";
+            this.lblDatabaseLabel.Size = new System.Drawing.Size(56, 13);
+            this.lblDatabaseLabel.TabIndex = 14;
+            this.lblDatabaseLabel.Text = "Database:";
+            // 
+            // lblDatabase
+            // 
+            this.lblDatabase.AutoSize = true;
+            this.lblDatabase.Location = new System.Drawing.Point(74, 26);
+            this.lblDatabase.Name = "lblDatabase";
+            this.lblDatabase.Size = new System.Drawing.Size(69, 13);
+            this.lblDatabase.TabIndex = 15;
+            this.lblDatabase.Text = "[lblDatabase]";
+            // 
             // frmGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 390);
+            this.ClientSize = new System.Drawing.Size(397, 438);
+            this.Controls.Add(this.lblDatabase);
+            this.Controls.Add(this.lblDatabaseLabel);
+            this.Controls.Add(this.lblServer);
+            this.Controls.Add(this.lblServerLabel);
             this.Controls.Add(this.chkOmitSchemaFromFileNames);
             this.Controls.Add(this.txtScriptFilenameSuffix);
             this.Controls.Add(this.label3);
@@ -202,5 +246,9 @@ namespace StaticGenerator
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtScriptFilenameSuffix;
         private System.Windows.Forms.CheckBox chkOmitSchemaFromFileNames;
+        private System.Windows.Forms.Label lblServerLabel;
+        private System.Windows.Forms.Label lblServer;
+        private System.Windows.Forms.Label lblDatabaseLabel;
+        private System.Windows.Forms.Label lblDatabase;
     }
 }
