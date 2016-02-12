@@ -160,11 +160,6 @@
             "AssemblyAsmDisplayName" = "8:StaticGeneratorCommon, Version=1.4.6.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9495146297C84DFC2836E25BC98D9BAF"
-                    {
-                    "Name" = "8:StaticGeneratorCommon.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:StaticGeneratorCommon.dll"
             "TargetName" = "8:"
@@ -251,15 +246,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Static Data Script Generator"
-        "ProductCode" = "8:{78595E9A-9979-41FB-A288-3401C444A151}"
-        "PackageCode" = "8:{AEABF7AA-C0FD-4251-A624-A39B144D412A}"
+        "ProductCode" = "8:{9961724F-714D-4591-ABA8-DF577793AB78}"
+        "PackageCode" = "8:{68077442-28AA-4EB6-A809-4071AF3749D7}"
         "UpgradeCode" = "8:{65C00986-5209-4634-814B-C6ECD9715520}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.4.6"
+        "ProductVersion" = "8:1.4.5886"
         "Manufacturer" = "8:Leon Mayne"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://leon.mvps.org/StaticData/"
