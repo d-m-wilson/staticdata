@@ -283,7 +283,7 @@ namespace StaticGeneratorCommon
                     strNullJoin += "tmp.[" + strKey + "] IS NULL AND ";
                 }
                 strNullJoin = strNullJoin.Substring(0, strNullJoin.Length - 5);
-                string strDelete = string.Format("\tDELETE FROM {0} FROM {0} LiveTable\n\tLEFT JOIN @tblTempTable tmp ON {1}\n\tWHERE {2}", pstrTableName, strJoinClause, strNullJoin);
+                string strDelete = string.Format("\tDELETE FROM {0} FROM {0} LiveTable\r\n\tLEFT JOIN @tblTempTable tmp ON {1}\r\n\tWHERE {2}", pstrTableName, strJoinClause, strNullJoin);
 
                 // Format the provided template with our output
                 string strOutputScript = string.Format(pstrTemplate, strTableDef, strTmpInsert, strLiveInsert, strUpdate, strDelete);
