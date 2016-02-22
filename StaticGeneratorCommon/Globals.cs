@@ -183,6 +183,12 @@ namespace StaticGeneratorCommon
 						// Don't consider calculated Columns
 						if( !(bool)dtTableSchema.Rows[i]["IsIdentity"] && (bool)dtTableSchema.Rows[i]["IsReadOnly"] )
 						{
+                            if (i == dsTableInfo.Tables[0].Columns.Count - 1)
+                            {
+                                sbTmpInsert.Remove(sbTmpInsert.Length - 2, 2);
+                                sbTmpInsert.Append(")" + Environment.NewLine);
+                            }
+
 							continue;
 						}
 						
